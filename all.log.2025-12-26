@@ -1,0 +1,1014 @@
+2025-12-26 20:50:00,772 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 20:50:00,790 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 20:50:00,791 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 20:50:08,105 - info_parser.py - WARNING - cookie错误或已过期,请按照README中方法重新获取
+2025-12-26 20:51:38,558 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 20:51:38,559 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 20:51:38,562 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 20:52:07,231 - util.py - ERROR - ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 773, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 1042, in _prepare_proxy
+    conn.connect()
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 773, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 1042, in _prepare_proxy
+    conn.connect()
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\parser\util.py", line 25, in handle_html
+    resp = requests.get(url, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\adapters.py", line 682, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2025-12-26 20:52:07,289 - info_parser.py - ERROR - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\parser\info_parser.py", line 21, in extract_user_info
+    nickname = self.selector.xpath('//title/text()')[0]
+               ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2025-12-26 20:52:07,290 - index_parser.py - ERROR - 'NoneType' object has no attribute 'id'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\parser\index_parser.py", line 36, in get_user
+    self.user.id = user_id
+    ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'id'
+2025-12-26 20:52:07,291 - spider.py - INFO - None
+2025-12-26 20:52:07,291 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 20:52:07,332 - spider.py - ERROR - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\spider.py", line 244, in _get_filepath
+    dir_name = self.user.nickname
+               ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2025-12-26 20:52:07,333 - csv_writer.py - ERROR - expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\writer\csv_writer.py", line 25, in __init__
+    with open(self.file_path, 'a', encoding='utf-8-sig',
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2025-12-26 20:52:07,333 - spider.py - ERROR - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\spider.py", line 244, in _get_filepath
+    dir_name = self.user.nickname
+               ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2025-12-26 20:52:07,334 - spider.py - ERROR - 'NoneType' object has no attribute '__dict__'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\spider.py", line 336, in get_one_user
+    self.write_user(self.user)
+  File "D:\weiboSpider\weibo_spider\spider.py", line 139, in write_user
+    writer.write_user(user)
+  File "D:\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in write_user
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in <listcomp>
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+                    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute '__dict__'
+2025-12-26 20:52:14,404 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 20:52:14,405 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 20:52:14,406 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 20:52:14,801 - index_parser.py - ERROR - list index out of range
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\parser\index_parser.py", line 39, in get_user
+    self.user.weibo_num = string_to_int(user_info[0][3:-1])
+                                        ~~~~~~~~~^^^
+IndexError: list index out of range
+2025-12-26 20:52:14,804 - spider.py - INFO - None
+2025-12-26 20:52:14,804 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 20:52:14,813 - spider.py - ERROR - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\spider.py", line 244, in _get_filepath
+    dir_name = self.user.nickname
+               ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2025-12-26 20:52:14,814 - csv_writer.py - ERROR - expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\writer\csv_writer.py", line 25, in __init__
+    with open(self.file_path, 'a', encoding='utf-8-sig',
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2025-12-26 20:52:14,814 - spider.py - ERROR - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\spider.py", line 244, in _get_filepath
+    dir_name = self.user.nickname
+               ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2025-12-26 20:52:14,815 - spider.py - ERROR - 'NoneType' object has no attribute '__dict__'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\spider.py", line 336, in get_one_user
+    self.write_user(self.user)
+  File "D:\weiboSpider\weibo_spider\spider.py", line 139, in write_user
+    writer.write_user(user)
+  File "D:\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in write_user
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in <listcomp>
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+                    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute '__dict__'
+2025-12-26 20:52:25,980 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 20:52:25,981 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 20:52:25,982 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 20:52:33,229 - index_parser.py - ERROR - list index out of range
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\parser\index_parser.py", line 39, in get_user
+    self.user.weibo_num = string_to_int(user_info[0][3:-1])
+                                        ~~~~~~~~~^^^
+IndexError: list index out of range
+2025-12-26 20:52:33,231 - spider.py - INFO - None
+2025-12-26 20:52:33,233 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 20:52:33,241 - spider.py - ERROR - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\spider.py", line 244, in _get_filepath
+    dir_name = self.user.nickname
+               ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2025-12-26 20:52:33,242 - csv_writer.py - ERROR - expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\writer\csv_writer.py", line 25, in __init__
+    with open(self.file_path, 'a', encoding='utf-8-sig',
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2025-12-26 20:52:33,242 - spider.py - ERROR - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\spider.py", line 244, in _get_filepath
+    dir_name = self.user.nickname
+               ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2025-12-26 20:52:33,242 - spider.py - ERROR - 'NoneType' object has no attribute '__dict__'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\spider.py", line 336, in get_one_user
+    self.write_user(self.user)
+  File "D:\weiboSpider\weibo_spider\spider.py", line 139, in write_user
+    writer.write_user(user)
+  File "D:\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in write_user
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in <listcomp>
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+                    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute '__dict__'
+2025-12-26 20:59:44,973 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 20:59:44,974 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 20:59:44,974 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 20:59:50,486 - spider.py - INFO - 用户昵称: 程序员贺同学
+用户id: 3854793919
+微博数: 2089
+关注数: 774
+粉丝数: 425
+
+2025-12-26 20:59:50,487 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 20:59:50,530 - txt_writer.py - INFO - 程序员贺同学信息写入txt文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.txt
+2025-12-26 20:59:50,530 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 20:59:53,730 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 20:59:53,730 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 20:59:53,731 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:00:06,321 - page_parser.py - INFO - :#深漂日记##工作日记##贺哥深漂日记20230914
+1、日常搬砖，临近下班前，同事提交的代码因为一个正则表达式导致线上出事故，报到端上去了，紧急回滚修复，又一次体现做好测试的重要性！
+2、读书社群今天新来了两个优秀的小伙伴，很开心，和优秀的小伙伴一起做事真的是一件很幸运的事
+3、下班地铁路上，看到大刀的公众号分享一段话：如果你想要好运，如果你想要得到更多机会，如果你想要有更多个人去帮助你，
+那么你需要自己不断的去展示出你积极向上，努力生活的这种状态，以及不断的去提升自己的能力。
+尽可能的做到知行合一，少抱怨，因为抱怨是于事无补的，多去转念，遇见很糟糕的事情的时候。记住一句话：塞翁失马，焉知非福。
+【深入了解贺哥】：
+北漂六周年总结：网页链接 
+关于贺哥：网页链接
+【成长见证群招募，满500人停】
+私信即可，发自我介绍，不定期踢人
+微博发布位置：无
+发布时间：2023-09-14 23:28
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：1
+url：https://weibo.cn/comment/Njj3Aymfi
+
+2025-12-26 21:00:06,322 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:00:11,950 - page_parser.py - INFO - :#深漂日记##深漂##贺哥深漂日记20230913
+1、日常搬砖，今天解决了一个线上问题，下班拉练✌️五公里
+2、今天公司活动日，中午不到12点，食堂已经🈶️很多人开始排队了。然后我和另外一个同事选了另外一个排队比较少的档口，选了一份卤肉饭，但吃饭的时候看着旁边的人的饭菜，有了对比，明显比我们的丰盛，突然就觉得眼前的饭菜不香了
+但这个念头一闪而过，很快我就察觉到自己这个念头是不对劲的，能在公司好好吃顿免费卤肉饭已经很知足了，为什么还要去比较，难道不能好好享受当下的可口的饭菜么？
+是啊，人性不总是这样么？总是不满足，总是贪心，却忽略了当下的满足，我们老是因缺乏什么东西而感到不满足，是因为我们对已经得到的东西缺少感恩之情
+【深入了解贺哥】：
+北漂六周年总结：网页链接 
+关于贺哥：网页链接
+【成长见证群招募，满500人停】
+私信即可，发自我介绍，不定期踢人
+微博发布位置：无
+发布时间：2023-09-13 22:30
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：1
+url：https://weibo.cn/comment/Nj9fro11c
+
+2025-12-26 21:00:11,950 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:00:22,056 - page_parser.py - INFO - :#深漂日记##深漂# 贺哥深漂日记20230912
+1、日常搬砖，好好上班
+2、有句话说的：“人总是好了伤疤忘了疼，重复犯相同的错误，只是在不同的时间、不同的地点。”
+而定期回顾，能够帮助我们在较长的时间跨度下，更容易地看清错误的根源，从而更好地集中精力解决问题。
+3、 看到北风哥的复盘，里面提到一句，非常认同，在重要的决策时，多花点时间调研，能超过90%的人，市场上绝大部分都是盲目跟风，凭感觉决策的人。
+【深入了解贺哥】：
+北漂六周年总结：网页链接 
+关于贺哥：网页链接
+【成长见证群招募，满500人停】
+私信即可，发自我介绍，不定期踢人         [
+微博发布位置：无
+发布时间：2023-09-12 22:53
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/NiZYs80cy
+
+2025-12-26 21:00:22,057 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:00:36,007 - page_parser.py - INFO - :贺哥 20230911#深漂日记##深漂# 
+1、今天开始正式写代码提测了，熟悉了一周的环境，又开始了和在线服务相爱相杀的搬砖日子，周一，是一周最不想上班的时候，但是过来了也就那样，很多时候压力和焦虑都是自己给自己的，遇到多大点事儿，放轻松，遇到问题一点一点解决，相信自己可以的
+2、地铁上，看到一段话：生活的本质就是这样，你想要什么，它偏不给你什么。摆脱这个死循环的方法只有一个——给我什么我就用好什么，积累到一定程度再去换能换的东西
+【深入了解贺哥】：
+北漂六周年总结：网页链接 
+关于贺哥：网页链接
+【成长见证群招募，满500人停】
+私信即可，发自我介绍，不定期踢人
+微博发布位置：无
+发布时间：2023-09-11 23:22
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/NiQJQw0vO
+
+2025-12-26 21:00:36,009 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:00:41,601 - page_parser.py - INFO - :#贺哥深漂日记# 20230910 #深漂# 
+1、下午逛了一下深圳人才公园，离我住的地方挺近的，周末习惯去公园溜溜，散散步，跑跑步，看看花花草草，还是比较舒服的😉
+2、 今天看到朋友分享一个Up 主视频，讲的太对了，【都成年了，要学会提问了-哔哩哔哩】 网页链接 ，
+知识分享者都有的痛，做知识分享这几年，收到很多的读者提问，有些提问非常好，带着背景，目标，问题，还有自己的思考，然后再发一个小红包，非常体面，这种就是高情商提问
+还有一种提问就是，自己完全不做任何背景调研，想把所有的麻烦全部推给被提问者。这种问题。除了你爹，没人愿意回答
+很多朋友可能觉得这件事情离自己很远。那请你想一下。你有没有提问或者被提问过诸如下列问题？
+贺哥，大厂怎么进？
+贺哥，C++怎么复习更好
+贺哥，简历怎么做更好？
+贺哥，去哪个城市比较好？
+贺哥，xxx 学校考研怎么样？
+以前看到这样的问题，一开始还好选择性回答下，但是多了我发现，完全就是自己给找麻烦，现在看到这些问题，我直接屏蔽无视掉，最起码你不尊重别人的时间哇
+下次你给别人提了一个问题还在傻傻的思考怎么对方这么高冷啊不回答，殊不知你可能已经被对方拉黑了
+【深入了解贺哥】：
+北漂六周年总结：网页链接 
+关于贺哥：网页链接
+【成长见证群招募，满500人停】
+私信即可，发自我介绍，不定期踢人
+微博发布位置：无
+发布时间：2023-09-10 19:22
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/NiFJFeD1g
+
+2025-12-26 21:00:41,602 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:00:54,053 - page_parser.py - INFO - :#贺哥深漂日记# 20230909  #深漂日记# 
+1、夜跑大南山，暴汗的感觉爽歪歪，研究明白，身体运动出汗会往外排除体内毒素，对健康有好处，每周跑步出汗已经成为我的日常，融入我的习惯了，只要隔个几天没有跑步运动，身体就会浑身不自在
+2、每周至少给自己抽出半天的时间看书，看剧，大脑放空，人体是一个系统，有压力也需要松弛，才能健康持续。
+3、 今天读到一段话，结合自己的理解，分享给大家，真正的安全感，来自你对自己的信心，是你每个阶段性目标的实现，而真正的归属感，在于你的内心深处，对自己命运的把控，因为你最大的对手永远是自己，阶段性的目标更需要付出之后的耐心等待，这个过程势必遇到很多阻碍，耐心积累，唯有此路
+【深入了解贺哥】：
+北漂六周年总结：网页链接 
+关于贺哥：网页链接
+【成长见证群招募，满500人停】
+私信即可，发自我介绍，不定期踢人 深圳
+微博发布位置：全文
+发布时间：2023-09-09 21:59
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：1
+url：https://weibo.cn/comment/NixkRn9AX
+
+2025-12-26 21:00:54,054 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:00:54,054 - page_parser.py - INFO - 卸载微博了。  
+微博发布位置：无
+发布时间：2021-08-15 20:13
+发布工具：iPhone客户端
+点赞数：3
+转发数：0
+评论数：1
+url：https://weibo.cn/comment/KtBlX3vZN
+
+2025-12-26 21:00:54,054 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:00:54,055 - spider.py - INFO - ------------------------------已获取程序员贺同学(3854793919)的第1页微博------------------------------
+2025-12-26 21:00:54,056 - csv_writer.py - INFO - 7条微博写入csv文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.csv
+2025-12-26 21:00:54,057 - txt_writer.py - INFO - 7条微博写入txt文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.txt
+2025-12-26 21:00:55,596 - page_parser.py - INFO - #小贺的日常# 于是他把头紧贴在枕头上，双手捂住耳朵，这样想：去想无关紧要的事。去想想风吧。  原图 
+微博发布位置：无
+发布时间：2021-08-15 20:12
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KtBlyuF5l
+
+2025-12-26 21:00:55,596 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:00:55,597 - page_parser.py - INFO - #读书笔记#世界上一直存在着这么一条路，让我们的能力从平庸到杰出，这条路漫长且艰辛坚信。这条路的背后是刻意练习，这条路的背后更是坚持，因为只有少数的人愿意走下去，所以优秀的人永远是少数。  原图 
+微博发布位置：无
+发布时间：2021-08-13 22:39
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/Ktjssu2sp
+
+2025-12-26 21:00:55,598 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:00:55,599 - page_parser.py - INFO - #小贺的日常##读书笔记#  原图 
+微博发布位置：无
+发布时间：2021-08-09 23:25
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KsI34qHbd
+
+2025-12-26 21:00:55,600 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:00:55,600 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:01:11,794 - page_parser.py - INFO - :#每日一句# 最近一些读者朋友跟我反馈，说碰到职场PUA，被渣男PUA，自己抑郁自残的故事，说实话，没亲身经历你不知道有多么艰难
+每次看到这种事情，我就十分的揪心
+从来没觉得这种事情有辣么严重，真的太难了
+努力去接触更好的一个圈子吧
+并且永远相信爱情，好男人/好女人比你想象的还要多一万倍，要主动去接触去更好的圈子
+缺爱并不是你的错，而是你原生家庭就这么一个环境，努力去接纳自己。
+让自己变得更好，是解决一切问题的关键，
+你值得拥有更好的人生
+微博发布位置：无
+发布时间：2021-08-02 00:25
+发布工具：iPhone客户端
+点赞数：1
+转发数：0
+评论数：1
+url：https://weibo.cn/comment/Krv1m3mbK
+
+2025-12-26 21:01:11,796 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:01:11,797 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:01:28,307 - page_parser.py - INFO - :#每日一句##小贺的日常##职场&成长 
+今天和两个同事聚餐，也是技术公众号做的不错的博主，
+大家聊着聊着，就不约而同聊起来自媒体，
+两个大佬谈笑风生，
+作为小白的我，在旁边默默的偷听，
+偶尔插一两句话。
+饭局上的最深的感悟，
+不是怎么涨粉，怎么做公众号，
+而是如果有一天不能写代码了，
+你觉得能有什么东西来支撑你现在的生活呢？
+程序员相对是一个抗风险比较低的一个职业，
+现实而又残酷的问题，
+如何破局：八小时之内谋生存，八小时之外谋发展。
+五道口三剑客面基
+微博发布位置：无
+发布时间：2021-07-26 00:20
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KqqZShKbU
+
+2025-12-26 21:01:28,308 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:01:28,308 - page_parser.py - INFO - #每日一句# 多数人为了逃避真正的思考愿意做任何事情……王兴  
+微博发布位置：无
+发布时间：2021-07-26 00:19
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：1
+url：https://weibo.cn/comment/KqqZBEhPG
+
+2025-12-26 21:01:28,309 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:01:28,309 - page_parser.py - INFO - #每日一句##小贺的日常#  原图 
+微博发布位置：无
+发布时间：2021-07-21 23:21
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KpOU2svZ6
+
+2025-12-26 21:01:28,310 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:01:28,310 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:01:28,310 - spider.py - INFO - ------------------------------已获取程序员贺同学(3854793919)的第2页微博------------------------------
+2025-12-26 21:01:28,311 - csv_writer.py - INFO - 7条微博写入csv文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.csv
+2025-12-26 21:01:28,311 - txt_writer.py - INFO - 7条微博写入txt文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.txt
+2025-12-26 21:01:41,000 - page_parser.py - INFO - #每日一句##小贺的日常#  原图 
+微博发布位置：无
+发布时间：2021-07-20 23:44
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KpFCJk8Vx
+
+2025-12-26 21:01:41,001 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:01:41,002 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:01:55,769 - page_parser.py - INFO - :#每日一句##小贺的日常# 
+Day 92每日复盘
+今天依旧是咖啡厅度过的一天
+1、手撕了排序八大算法代码，整体的复习了一遍，又加深了印象
+2、晚上和爸爸妈妈，老同学聊天，唠唠家常
+3、2017-2021，时间不等人，转眼之间，这就本科毕业 4  年了， 想起张雪峰的一个视频，好像是说到了本科毕业十年聚会，你是否成为了那个别人看得起的人，还是那个别人依旧看不起的人
+想象自己未来十年之后要成为的样子，朝着这个目标前进！
+今日思考：
+每个人的苦难是等量的，你能从苦难中获取到快乐和幸福，你就是幸运的，如果你认为，人生来就应该是幸福的，那么你会更加苦，因为你总能碰到各种烦恼，
+微博发布位置：无
+发布时间：2021-07-17 23:22
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：1
+url：https://weibo.cn/comment/Kpdcg9hUt
+
+2025-12-26 21:01:55,771 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:01:55,771 - page_parser.py - INFO - #每日一句# 当你发现有一个人你说什么他都能够理解沟通很顺畅，你也很享受那个过程好像找到了人生伴侣和soulmate99%的可能性是遇到了一个情商智商都比你高的人在对你向下兼容  
+微博发布位置：无
+发布时间：2021-07-16 23:33
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/Kp3QnxB8q
+
+2025-12-26 21:01:55,772 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:01:55,772 - page_parser.py - INFO - #小贺的日常#周五下班的某一天26岁的自己对着镜子里那个人说什么时候才能在这座城市拥有一套自己的房子呐痴人说梦  原图 
+微博发布位置：无
+发布时间：2021-07-16 21:42
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/Kp37nwz8D
+
+2025-12-26 21:01:55,773 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:01:55,774 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:02:15,922 - page_parser.py - INFO - :#每日一句##小贺的日常#
+Day 90 每日复盘
+今天在和同事对接项目的过程中发现一个问题，对接的项目涉及到特别繁琐的一些细节问题
+其实这个项目完全可以交给一个单独部门来做，现在是按上头的命令拆分成了两个部门
+a部门完成一部分，然后再往后推进给b部门
+就我们最后发现这个项目完全可以交给单独一个部门也能完成，就不会有后面很多数据不一致解决的成本，沟通成本等等需要花费时间
+不知道一开始谁拍的板，需要这样来规划。
+晚上下班回家开始刷《深入理解计算机系统》csapp，为后面的面试做积累！
+晚安💤
+微博发布位置：无
+发布时间：2021-07-15 23:18
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KoUjI4dRT
+
+2025-12-26 21:02:15,923 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:15,924 - page_parser.py - INFO - #每日一句##小贺的日常#  原图 
+微博发布位置：无
+发布时间：2021-07-14 23:37
+发布工具：iPhone客户端
+点赞数：1
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KoL16uUYZ
+
+2025-12-26 21:02:15,925 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:15,926 - page_parser.py - INFO - #每日一句##小贺的日常#  原图 
+微博发布位置：无
+发布时间：2021-07-13 23:11
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KoBpQbk0X
+
+2025-12-26 21:02:15,926 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:15,927 - page_parser.py - INFO - #每日一句##小贺的日常#  原图 
+微博发布位置：无
+发布时间：2021-07-12 23:50
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KosflxGHn
+
+2025-12-26 21:02:15,927 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:15,927 - spider.py - INFO - ------------------------------已获取程序员贺同学(3854793919)的第3页微博------------------------------
+2025-12-26 21:02:15,928 - csv_writer.py - INFO - 8条微博写入csv文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.csv
+2025-12-26 21:02:15,928 - txt_writer.py - INFO - 8条微博写入txt文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.txt
+2025-12-26 21:02:30,351 - page_parser.py - INFO - #每日一句##小贺的日常#  原图 
+微博发布位置：无
+发布时间：2021-07-11 23:00
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KoiujuEWU
+
+2025-12-26 21:02:30,353 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:30,353 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:02:30,353 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:02:30,355 - page_parser.py - INFO - #每日一句##小贺的日常#  原图 
+微博发布位置：无
+发布时间：2021-07-10 23:41
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/Ko9kEjj6n
+
+2025-12-26 21:02:30,356 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:30,357 - page_parser.py - INFO - #每日一句# 人每天都在找＂幸福＂幸福是什么呢？大概就是找到了一个愿意听你说废话的人。  
+微博发布位置：无
+发布时间：2021-07-10 00:08
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/Ko04VfZiA
+
+2025-12-26 21:02:30,358 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:37,286 - page_parser.py - INFO - :#每日一句##小贺的日常# Day 84每日复盘
+最新消息：国家网信办下架“滴滴企业版”等25款App
+感觉滴滴已成过去时，创业维艰啊
+最近公司组织员工年度体检，早上去了爱康国宾，然后几十项的的体检项目，一路下来都有人热心指导，感觉在大城市还是效率挺高的，而且还送一个早餐
+想起我们老家那四五线城市体检机构，办事的效率，基础建设，服务态度都差了一大截
+想起来一个搞笑的事，白天左边一个哥们排了半小时队检查彩超，结果快到的时候阿姨拿过单子一看你单子没检彩超排什么队😂
+周五了，大家周末愉快
+微博发布位置：无
+发布时间：2021-07-09 23:38
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：1
+url：https://weibo.cn/comment/KnZSRE6wv
+
+2025-12-26 21:02:37,288 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:37,290 - page_parser.py - INFO - #每日一句##小贺的日常#  原图 
+微博发布位置：无
+发布时间：2021-07-08 23:19
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KnQkvfBOE
+
+2025-12-26 21:02:37,292 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:37,294 - page_parser.py - INFO - #每日一句# 事业成功的说压力大，工作清闲的人说没前途，没有结婚的说怎么还遇不到合适的人，结婚的却说遇到的人不适合自己。幸福像皮球一样被踢来踢去，烦恼却像宝贝一样谁都不肯撒手。  
+微博发布位置：无
+发布时间：2021-07-07 00:25
+发布工具：iPhone客户端
+点赞数：1
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KnxUisY7m
+
+2025-12-26 21:02:37,294 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:48,660 - page_parser.py - INFO - :Day 80每日复盘
+朋友圈看到的，很有启发🤔
+《一条关于肥肠引发的思考》
+最近看到肥肠突然想到一个问题，为什么装过一次屎的碗，大家都不会再用了，但是装过几个月屎的肥肠却那么多人爱吃?
+得出结论是:
+因为你可以轻易的找到一个没装过屎的碗
+但你却找不到一个没装过屎的肥肠。
+这就引发了我对于核心竞争力和不可替代性的思考:
+对比我们在工作中的映射是:
+一个小伙子只要有自己的独特优势和不可代替性(就像肥肠)，那么就算你曾经装过很多屎，只要洗干净了，大家依然会很喜欢你。
+另一个小伙子如果没有自己的独特优势，可以轻易的被替代(就像碗)，那么就算你曾经只装过一次屎，并且洗干净了，大家也会很嫌…@知识星球
+微博发布位置：无
+发布时间：2021-07-06 23:35
+发布工具：iPhone客户端
+点赞数：1
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/KnxA9ecjH
+
+2025-12-26 21:02:48,663 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:48,665 - page_parser.py - INFO - #每日一句##小贺的日常#  原图 
+微博发布位置：无
+发布时间：2021-07-05 23:52
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/Knogp3OfI
+
+2025-12-26 21:02:48,666 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:48,666 - spider.py - INFO - ------------------------------已获取程序员贺同学(3854793919)的第4页微博------------------------------
+2025-12-26 21:02:48,667 - csv_writer.py - INFO - 8条微博写入csv文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.csv
+2025-12-26 21:02:48,668 - txt_writer.py - INFO - 8条微博写入txt文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.txt
+2025-12-26 21:02:55,400 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:02:55,401 - page_parser.py - INFO - #每日一句##小贺的日常#  原图 
+微博发布位置：无
+发布时间：2021-07-03 23:26
+发布工具：iPhone客户端
+点赞数：1
+转发数：0
+评论数：0
+url：https://weibo.cn/comment/Kn5f5houI
+
+2025-12-26 21:02:55,401 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:02:55,402 - page_parser.py - INFO - #每日一句##小贺的日常#  原图 
+微博发布位置：无
+发布时间：2021-07-02 23:34
+发布工具：iPhone客户端
+点赞数：0
+转发数：0
+评论数：1
+url：https://weibo.cn/comment/KmVRRb7VY
+
+2025-12-26 21:02:55,402 - page_parser.py - INFO - ----------------------------------------------------------------------------------------------------
+2025-12-26 21:03:23,863 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 21:03:23,863 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 21:03:23,863 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 21:03:23,865 - config_util.py - WARNING - since_date值应为yyyy-mm-dd形式或整数,请重新输入
+2025-12-26 21:03:55,687 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 21:03:55,687 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 21:03:55,688 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 21:04:00,997 - spider.py - INFO - 用户昵称: 程序员贺同学
+用户id: 3854793919
+微博数: 2089
+关注数: 774
+粉丝数: 425
+
+2025-12-26 21:04:00,999 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:04:01,009 - txt_writer.py - INFO - 程序员贺同学信息写入txt文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.txt
+2025-12-26 21:04:01,009 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:04:08,912 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:04:08,913 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:04:08,913 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:05:01,750 - spider.py - INFO - ------------------------------已获取程序员贺同学(3854793919)的第1页微博------------------------------
+2025-12-26 21:05:01,751 - spider.py - INFO - 共爬取0条原创微博
+2025-12-26 21:05:01,751 - spider.py - INFO - 信息抓取完毕
+2025-12-26 21:05:01,751 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:07:37,176 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 21:07:37,178 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 21:07:37,179 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 21:07:43,722 - spider.py - INFO - 用户昵称: 程序员贺同学
+用户id: 3854793919
+微博数: 2089
+关注数: 774
+粉丝数: 425
+
+2025-12-26 21:07:43,722 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:07:43,734 - txt_writer.py - INFO - 程序员贺同学信息写入txt文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.txt
+2025-12-26 21:07:43,734 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:07:55,183 - util.py - ERROR - ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 773, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 1042, in _prepare_proxy
+    conn.connect()
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 773, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 1042, in _prepare_proxy
+    conn.connect()
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\parser\util.py", line 25, in handle_html
+    resp = requests.get(url, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\adapters.py", line 682, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2025-12-26 21:07:55,197 - spider.py - ERROR - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\spider.py", line 341, in get_one_user
+    self.download_user_avatar(user_config['user_uri'])
+  File "D:\weiboSpider\weibo_spider\spider.py", line 151, in download_user_avatar
+    avatar_album_url).extract_pic_urls()
+                      ^^^^^^^^^^^^^^^^^^
+  File "D:\weiboSpider\weibo_spider\parser\album_parser.py", line 13, in extract_pic_urls
+    pic_list = self.selector.xpath('//div[@class="c"]//img/@src')
+               ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2025-12-26 21:09:54,442 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 21:09:54,442 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 21:09:54,444 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 21:10:00,009 - spider.py - INFO - 用户昵称: 程序员贺同学
+用户id: 3854793919
+微博数: 2089
+关注数: 774
+粉丝数: 425
+
+2025-12-26 21:10:00,009 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:10:00,019 - txt_writer.py - INFO - 程序员贺同学信息写入txt文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.txt
+2025-12-26 21:10:00,019 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:11:05,904 - index_parser.py - INFO - 未找到背景图
+2025-12-26 21:11:15,603 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:11:15,603 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:11:15,603 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:11:56,432 - spider.py - INFO - ------------------------------已获取程序员贺同学(3854793919)的第1页微博------------------------------
+2025-12-26 21:11:56,433 - spider.py - INFO - 共爬取0条原创微博
+2025-12-26 21:11:56,434 - spider.py - INFO - 信息抓取完毕
+2025-12-26 21:11:56,435 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:16:21,735 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 21:16:21,736 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 21:16:21,737 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 21:16:29,815 - spider.py - INFO - 用户昵称: 程序员贺同学
+用户id: 3854793919
+微博数: 2089
+关注数: 774
+粉丝数: 425
+
+2025-12-26 21:16:29,817 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:16:29,828 - txt_writer.py - INFO - 程序员贺同学信息写入txt文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.txt
+2025-12-26 21:16:29,828 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:16:39,838 - index_parser.py - INFO - 未找到背景图
+2025-12-26 21:16:42,392 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:16:42,393 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:16:42,394 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:17:16,771 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 21:17:16,771 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 21:17:16,773 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 21:17:24,859 - spider.py - INFO - 用户昵称: 程序员贺同学
+用户id: 3854793919
+微博数: 2089
+关注数: 774
+粉丝数: 425
+
+2025-12-26 21:17:24,860 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:17:24,874 - txt_writer.py - INFO - 程序员贺同学信息写入txt文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.txt
+2025-12-26 21:17:24,874 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:17:31,894 - index_parser.py - INFO - 未找到背景图
+2025-12-26 21:17:34,949 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:17:34,949 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:17:34,949 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:27:12,898 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 21:27:12,899 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 21:27:12,900 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 21:27:17,242 - spider.py - INFO - 用户昵称: 程序员贺同学
+用户id: 3854793919
+微博数: 2089
+关注数: 774
+粉丝数: 425
+
+2025-12-26 21:27:17,242 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:27:17,253 - txt_writer.py - INFO - 程序员贺同学信息写入txt文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.txt
+2025-12-26 21:27:17,253 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:27:29,963 - util.py - ERROR - ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 773, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 1042, in _prepare_proxy
+    conn.connect()
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 773, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connectionpool.py", line 1042, in _prepare_proxy
+    conn.connect()
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\urllib3\util\ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\parser\util.py", line 25, in handle_html
+    resp = requests.get(url, headers=headers)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\sessions.py", line 724, in send
+    history = [resp for resp in gen]
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\sessions.py", line 724, in <listcomp>
+    history = [resp for resp in gen]
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\sessions.py", line 265, in resolve_redirects
+    resp = self.send(
+           ^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ProgramData\Anaconda3\envs\weibo\Lib\site-packages\requests\adapters.py", line 682, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2025-12-26 21:27:29,976 - spider.py - ERROR - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "D:\weiboSpider\weibo_spider\spider.py", line 342, in get_one_user
+    self.download_user_avatar(user_config['user_uri'])
+  File "D:\weiboSpider\weibo_spider\spider.py", line 149, in download_user_avatar
+    user_uri).extract_avatar_album_url()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\weiboSpider\weibo_spider\parser\photo_parser.py", line 16, in extract_avatar_album_url
+    result = self.selector.xpath('//img[@alt="头像相册"]/../@href')
+             ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2025-12-26 21:28:27,213 - config_util.py - ERROR - Failed to obtain weibo.cn cookie from Chrome browser: This operation requires admin. Please run as admin.
+2025-12-26 21:28:27,214 - config_util.py - ERROR - Check for cookie failed: This operation requires admin. Please run as admin.
+2025-12-26 21:28:27,214 - spider.py - INFO - Using the cookie field in config.json as the request cookie.
+2025-12-26 21:28:37,045 - spider.py - INFO - 用户昵称: 程序员贺同学
+用户id: 3854793919
+微博数: 2089
+关注数: 774
+粉丝数: 425
+
+2025-12-26 21:28:37,045 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:28:37,052 - txt_writer.py - INFO - 程序员贺同学信息写入txt文件完毕，保存路径：D:\weiboSpider\weibo\程序员贺同学\3854793919.txt
+2025-12-26 21:28:37,052 - spider.py - INFO - ****************************************************************************************************
+2025-12-26 21:28:48,270 - index_parser.py - INFO - 未找到背景图
+2025-12-26 21:28:51,436 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:28:51,436 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:28:51,436 - page_parser.py - INFO - 正在过滤转发微博
+2025-12-26 21:29:43,706 - spider.py - INFO - ------------------------------已获取程序员贺同学(3854793919)的第1页微博------------------------------
+2025-12-26 21:29:43,707 - spider.py - INFO - 共爬取0条原创微博
+2025-12-26 21:29:43,707 - spider.py - INFO - 信息抓取完毕
+2025-12-26 21:29:43,708 - spider.py - INFO - ****************************************************************************************************

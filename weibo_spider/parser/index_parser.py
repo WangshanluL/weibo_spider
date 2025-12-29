@@ -54,3 +54,18 @@ class IndexParser(Parser):
             return page_num
         except Exception as e:
             logger.exception(e)
+    def extract_cover_image_url(self):
+        """提取用户主页背景图URL"""
+        # 方法1：通过 woo-picture-img class（最直接）
+        result = self.selector.xpath('//img[@class="woo-picture-img"]/@src')
+        
+        # 方法2：更精确的定位（备选）
+        # result = self.selector.xpath('//div[contains(@class, "ProfileHeader_pic")]//img/@src')
+        
+        if len(result) > 0:
+            cover_url = result[0]
+            logger.info(f'找到背景图: {cover_url}')
+            return cover_url
+        else:
+            logger.info('未找到背景图')
+            return None

@@ -7,6 +7,7 @@ class PhotoParser(Parser):
         self.cookie = cookie
         self.url = "https://weibo.cn/" + str(user_id) + "/photo?tf=6_008"
         self.selector = handle_html(self.cookie, self.url)
+        print(f"self{self.selector}")
         self.user_id = user_id
 
     def extract_avatar_album_url(self):
@@ -17,3 +18,18 @@ class PhotoParser(Parser):
             return "https://weibo.cn" + result[0]
         else:
             return "https://weibo.cn/" + str(self.user_id) + "/avatar?rl=0"
+    def extract_cover_image_url(self):
+        """提取用户主页背景图URL"""
+        # 方法1：通过 woo-picture-img class（最直接）
+        #result = self.selector.xpath('//img[@class="woo-picture-img"]/@src')
+        
+        # 方法2：更精确的定位（备选）
+        result = self.selector.xpath('//div[contains(@class, "ProfileHeader_pic")]//img/@src')
+        
+        if len(result) > 0:
+            cover_url = result[0]
+            
+            return cover_url
+        else:
+            
+            return None

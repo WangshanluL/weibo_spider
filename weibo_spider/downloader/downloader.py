@@ -59,3 +59,4 @@ class Downloader(ABC):
             logger.info(self.file_dir)
         except Exception as e:
             logger.exception(e)
+

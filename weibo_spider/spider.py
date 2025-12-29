@@ -65,7 +65,7 @@ class Spider:
         self.file_download_timeout = config.get(
             'file_download_timeout',
             [5, 5, 10
-             ])  # 控制文件下载“超时”时的操作，值是list形式，包含三个数字，依次分别是最大超时重试次数、最大连接时间和最大读取时间
+             ])  # 控制文件下载"超时"时的操作，值是list形式，包含三个数字，依次分别是最大超时重试次数、最大连接时间和最大读取时间
         self.result_dir_name = config.get(
             'result_dir_name', 0)  # 结果目录名，取值为0或1，决定结果文件存储在用户昵称文件夹里还是用户id文件夹里
         self.cookie = config['cookie']
@@ -125,6 +125,52 @@ class Spider:
         self.user = User()  # 存储爬取到的用户信息
         self.got_num = 0  # 存储爬取到的微博数
         self.weibo_id_list = []  # 存储爬取到的所有微博id
+        
+        # 新增：已爬取用户记录文件路径
+        if FLAGS.output_dir is not None:
+            self.crawled_users_file = FLAGS.output_dir + os.sep + 'crawled_users.json'
+        else:
+            self.crawled_users_file = os.getcwd() + os.sep + 'weibo' + os.sep + 'crawled_users.json'
+        
+        # 新增：加载已爬取用户记录
+        self.crawled_users = self._load_crawled_users()
+
+    def _load_crawled_users(self):
+        """加载已爬取用户记录"""
+        try:
+            if os.path.exists(self.crawled_users_file):
+                with open(self.crawled_users_file, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            return {}
+        except Exception as e:
+            logger.warning(f'加载已爬取用户记录失败: {e}')
+            return {}
+
+    def _save_crawled_user(self, user_uri, user_nickname):
+        """保存已爬取用户记录"""
+        try:
+            # 确保目录存在
+            crawled_dir = os.path.dirname(self.crawled_users_file)
+            if not os.path.exists(crawled_dir):
+                os.makedirs(crawled_dir)
+            
+            # 记录爬取时间和用户昵称
+            self.crawled_users[user_uri] = {
+                'nickname': user_nickname,
+                'crawled_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            }
+            
+            # 保存到文件
+            with open(self.crawled_users_file, 'w', encoding='utf-8') as f:
+                json.dump(self.crawled_users, f, ensure_ascii=False, indent=2)
+            
+            logger.info(f'已记录用户 {user_nickname}({user_uri}) 的爬取状态')
+        except Exception as e:
+            logger.warning(f'保存已爬取用户记录失败: {e}')
+
+    def _is_user_crawled(self, user_uri):
+        """检查用户是否已经爬取过"""
+        return user_uri in self.crawled_users
 
     def write_weibo(self, weibos):
         """将爬取到的信息写入文件或数据库"""
@@ -152,76 +198,118 @@ class Spider:
         AvatarPictureDownloader(
             self._get_filepath('img'),
             self.file_download_timeout).handle_download(pic_urls)
-
-    def get_weibo_info(self):
-        """获取微博信息"""
+    def download_user_cover(self, user_uri):
+        """下载用户主页背景图"""
         try:
-            since_date = datetime_util.str_to_time(
-                self.user_config['since_date'])
-            now = datetime.now()
-            if since_date <= now:
-                page_num = IndexParser(
-                    self.cookie,
-                    self.user_config['user_uri']).get_page_num()  # 获取微博总页数
-                self.page_count += 1
-                if self.page_count > 2 and (self.page_count +
-                                            page_num) > self.global_wait[0][0]:
-                    wait_seconds = int(
-                        self.global_wait[0][1] *
-                        min(1, self.page_count / self.global_wait[0][0]))
-                    logger.info(u'即将进入全局等待时间，%d秒后程序继续执行' % wait_seconds)
-                    for i in tqdm(range(wait_seconds)):
-                        sleep(1)
-                    self.page_count = 0
-                    self.global_wait.append(self.global_wait.pop(0))
-                page1 = 0
-                random_pages = random.randint(*self.random_wait_pages)
-                for page in tqdm(range(1, page_num + 1), desc='Progress'):
-                    weibos, self.weibo_id_list, to_continue = PageParser(
-                        self.cookie,
-                        self.user_config, page, self.filter).get_one_page(
-                            self.weibo_id_list)  # 获取第page页的全部微博
-                    logger.info(
-                        u'%s已获取%s(%s)的第%d页微博%s',
-                        '-' * 30,
-                        self.user.nickname,
-                        self.user.id,
-                        page,
-                        '-' * 30,
-                    )
-                    self.page_count += 1
-                    if weibos:
-                        yield weibos
-                    if not to_continue:
-                        break
-
-                    # 通过加入随机等待避免被限制。爬虫速度过快容易被系统限制(一段时间后限
-                    # 制会自动解除)，加入随机等待模拟人的操作，可降低被系统限制的风险。默
-                    # 认是每爬取1到5页随机等待6到10秒，如果仍然被限，可适当增加sleep时间
-                    if (page - page1) % random_pages == 0 and page < page_num:
-                        sleep(random.randint(*self.random_wait_seconds))
-                        page1 = page
-                        random_pages = random.randint(*self.random_wait_pages)
-
-                    if self.page_count >= self.global_wait[0][0]:
-                        logger.info(u'即将进入全局等待时间，%d秒后程序继续执行' %
-                                    self.global_wait[0][1])
-                        for i in tqdm(range(self.global_wait[0][1])):
-                            sleep(1)
-                        self.page_count = 0
-                        self.global_wait.append(self.global_wait.pop(0))
-
-                # 更新用户user_id_list.txt中的since_date
-                if self.user_config_file_path or FLAGS.u:
-                    config_util.update_user_config_file(
-                        self.user_config_file_path,
-                        self.user_config['user_uri'],
-                        self.user.nickname,
-                        self.new_since_date,
-                    )
+            # 使用 IndexParser 或 PhotoParser 来获取背景图
+            cover_url = IndexParser(self.cookie, user_uri).extract_cover_image_url()
+            
+            if cover_url:
+                from .downloader import CoverImageDownloader
+                downloader = CoverImageDownloader(
+                    self._get_filepath('img'),
+                    self.file_download_timeout
+                )
+                downloader.download_cover(cover_url, self.user.id)
+                logger.info(f'背景图下载完成: {self.user.nickname}')
         except Exception as e:
             logger.exception(e)
 
+    def get_weibo_info(self):
+            """获取微博信息"""
+            try:
+                since_date = datetime_util.str_to_time(
+                    self.user_config['since_date'])
+                now = datetime.now()
+                
+                # --- 新增配置: 设置最大爬取数量 ---
+                max_weibo_count = 15
+                total_weibo_count = 0
+                # -------------------------------
+
+                if since_date <= now:
+                    page_num = IndexParser(
+                        self.cookie,
+                        self.user_config['user_uri']).get_page_num()  # 获取微博总页数
+                    self.page_count += 1
+                    if self.page_count > 2 and (self.page_count +
+                                                page_num) > self.global_wait[0][0]:
+                        wait_seconds = int(
+                            self.global_wait[0][1] *
+                            min(1, self.page_count / self.global_wait[0][0]))
+                        logger.info(u'即将进入全局等待时间，%d秒后程序继续执行' % wait_seconds)
+                        for i in tqdm(range(wait_seconds)):
+                            sleep(1)
+                        self.page_count = 0
+                        self.global_wait.append(self.global_wait.pop(0))
+                    
+                    page1 = 0
+                    random_pages = random.randint(*self.random_wait_pages)
+                    for page in tqdm(range(1, page_num + 1), desc='Progress'):
+                        weibos, self.weibo_id_list, to_continue = PageParser(
+                            self.cookie,
+                            self.user_config, page, self.filter).get_one_page(
+                                self.weibo_id_list)  # 获取第page页的全部微博
+                        logger.info(
+                            u'%s已获取%s(%s)的第%d页微博%s',
+                            '-' * 30,
+                            self.user.nickname,
+                            self.user.id,
+                            page,
+                            '-' * 30,
+                        )
+                        self.page_count += 1
+                        
+                        if weibos:
+                            # --- 新增逻辑: 判断是否达到30条 ---
+                            current_len = len(weibos)
+                            # 如果当前总数 + 本页数量 > 30，则截取需要的数量
+                            if total_weibo_count + current_len > max_weibo_count:
+                                needed_count = max_weibo_count - total_weibo_count
+                                weibos = weibos[:needed_count] # 截取列表
+                                yield weibos
+                                logger.info(u'已达到%d条微博限制，停止爬取', max_weibo_count)
+                                break # 停止循环
+                            
+                            # 如果没超标，正常输出
+                            yield weibos
+                            total_weibo_count += current_len
+                            
+                            # 如果正好达到30条 (例如每页10条，正好爬完第3页)
+                            if total_weibo_count >= max_weibo_count:
+                                logger.info(u'已达到%d条微博限制，停止爬取', max_weibo_count)
+                                break
+                            # ---------------------------------
+
+                        if not to_continue:
+                            break
+
+                        # 通过加入随机等待避免被限制。爬虫速度过快容易被系统限制(一段时间后限
+                        # 制会自动解除)，加入随机等待模拟人的操作，可降低被系统限制的风险。默
+                        # 认是每爬取1到5页随机等待6到10秒，如果仍然被限，可适当增加sleep时间
+                        if (page - page1) % random_pages == 0 and page < page_num:
+                            sleep(random.randint(*self.random_wait_seconds))
+                            page1 = page
+                            random_pages = random.randint(*self.random_wait_pages)
+
+                        if self.page_count >= self.global_wait[0][0]:
+                            logger.info(u'即将进入全局等待时间，%d秒后程序继续执行' %
+                                        self.global_wait[0][1])
+                            for i in tqdm(range(self.global_wait[0][1])):
+                                sleep(1)
+                            self.page_count = 0
+                            self.global_wait.append(self.global_wait.pop(0))
+
+                    # 更新用户user_id_list.txt中的since_date
+                    if self.user_config_file_path or FLAGS.u:
+                        config_util.update_user_config_file(
+                            self.user_config_file_path,
+                            self.user_config['user_uri'],
+                            self.user.nickname,
+                            self.new_since_date,
+                        )
+            except Exception as e:
+                logger.exception(e)
     def _get_filepath(self, type):
         """获取结果文件路径"""
         try:
@@ -292,12 +380,13 @@ class Spider:
 
         self.downloaders = []
         if self.pic_download == 1:
-            from .downloader import (OriginPictureDownloader,
-                                     RetweetPictureDownloader)
+            # from .downloader import (OriginPictureDownloader,
+            #                          RetweetPictureDownloader)
 
-            self.downloaders.append(
-                OriginPictureDownloader(self._get_filepath('img'),
-                                        self.file_download_timeout))
+            # self.downloaders.append(
+            #     OriginPictureDownloader(self._get_filepath('img'),
+            #                             self.file_download_timeout))
+            print("0")
         if self.pic_download and not self.filter:
             self.downloaders.append(
                 RetweetPictureDownloader(self._get_filepath('img'),
@@ -312,6 +401,13 @@ class Spider:
     def get_one_user(self, user_config):
         """获取一个用户的微博"""
         try:
+            # 新增：检查用户是否已爬取
+            user_uri = user_config['user_uri']
+            if self._is_user_crawled(user_uri):
+                crawled_info = self.crawled_users[user_uri]
+                logger.info(f'用户 {crawled_info["nickname"]}({user_uri}) 已在 {crawled_info["crawled_time"]} 爬取过，跳过')
+                return
+            
             self.get_user_info(user_config['user_uri'])
             logger.info(self.user)
             logger.info('*' * 100)
@@ -323,7 +419,7 @@ class Spider:
             # 下载用户头像相册中的图片。
             if self.pic_download:
                 self.download_user_avatar(user_config['user_uri'])
-
+                self.download_user_cover(user_config['user_uri'])
             for weibos in self.get_weibo_info():
                 self.write_weibo(weibos)
                 self.got_num += len(weibos)
@@ -333,6 +429,10 @@ class Spider:
                 logger.info(u'共爬取' + str(self.got_num) + u'条原创微博')
             logger.info(u'信息抓取完毕')
             logger.info('*' * 100)
+            
+            # 新增：爬取成功后保存记录
+            self._save_crawled_user(user_uri, self.user.nickname)
+            
         except Exception as e:
             logger.exception(e)
 
@@ -343,16 +443,34 @@ class Spider:
                 logger.info(
                     u'没有配置有效的user_id，请通过config.json或user_id_list.txt配置user_id')
                 return
+            
+            # 新增：统计跳过和爬取的用户数
+            total_users = len(self.user_config_list)
+            skipped_users = 0
+            crawled_users = 0
+            
             user_count = 0
             user_count1 = random.randint(*self.random_wait_pages)
             random_users = random.randint(*self.random_wait_pages)
             for user_config in self.user_config_list:
+                # 新增：检查是否已爬取
+                if self._is_user_crawled(user_config['user_uri']):
+                    skipped_users += 1
+                    continue
+                
                 if (user_count - user_count1) % random_users == 0:
                     sleep(random.randint(*self.random_wait_seconds))
                     user_count1 = user_count
                     random_users = random.randint(*self.random_wait_pages)
                 user_count += 1
                 self.get_one_user(user_config)
+                crawled_users += 1
+            
+            # 新增：输出统计信息
+            logger.info('=' * 100)
+            logger.info(f'爬取任务完成！总用户数: {total_users}, 新爬取: {crawled_users}, 跳过: {skipped_users}')
+            logger.info('=' * 100)
+            
         except Exception as e:
             logger.exception(e)
 
