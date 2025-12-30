@@ -1,0 +1,62 @@
+{
+    "user_id_list": "user_id_list.txt",
+    "filter": 1,
+    "since_date": "2018-12-01",
+    "end_date": "now",
+    "random_wait_pages": [
+        1,
+        5
+    ],
+    "random_wait_seconds": [
+        6,
+        10
+    ],
+    "global_wait": [
+        [
+            1000,
+            3600
+        ],
+        [
+            500,
+            2000
+        ]
+    ],
+    "write_mode": [
+        "json"
+    ],
+    "pic_download": 0,
+    "video_download": 0,
+    "file_download_timeout": [
+        5,
+        5,
+        10
+    ],
+    "result_dir_name": 1,
+    "cookie": "tid=01ARUNGGgBje1zv16nahsu41SKJcxQ4FG8k9Fb2_KNp0r_; ALF=1769345950; SCF=AnsH7plM5-hHvl4d3LDiebsE89l6_28vTHTbSi-OunYluA-RnrEWreuEHRSYda1hsURhnhOZUgolu4nI-JZzrT4.; SUB=_2A25ESvbODeRhGeFG7VQX8yrOyDqIHXVnJnYGrDV6PUJbktCOLVDZkW1NeQHb_pBqoVIKifW9qyVgJp1to-tg6S56; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WW5gCHoHLYcUsVyyKCgUH6O5NHD95QN1hqcSoeXeoecWs4Dqcjyi--NiKy8iKyFi--ci-zpiKn4i--Xi-zRiKn4eo5p1K5R; _T_WM=29512324334; MLOGIN=1; M_WEIBOCN_PARAMS=uicode%3D20000174; XSRF-TOKEN=16197f",
+    "mysql_config": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "123456",
+        "charset": "utf8mb4"
+    },
+    "kafka_config": {
+        "bootstrap-server": "127.0.0.1:9092",
+        "weibo_topics": [
+            "spider_weibo"
+        ],
+        "user_topics": [
+            "spider_weibo"
+        ]
+    },
+    "sqlite_config": "weibo.db",
+    "mongo_config": {
+        "connection_string": "mongodb://admin:password@localhost:27017/weibo",
+        "dba_name": "",
+        "dba_password": ""
+    },
+    "post_config": {
+        "api_url": "",
+        "api_token": ""
+    }
+}
